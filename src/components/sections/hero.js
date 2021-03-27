@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const StyledHeroSection = styled.section`
   display: flex;
@@ -29,7 +30,7 @@ const StyledHeroSection = styled.section`
     margin: 20px 0 0;
     max-width: 540px;
     font-size: clamp(18px, 5vw, 20px);
-    ;
+    line-height: 1.6rem;
   }
 
   .email-link {
@@ -63,10 +64,11 @@ const StyledHeroSection = styled.section`
 
 const Hero = ({ content }) => {
   const { frontmatter, rawMarkdownBody } = content
+  const emoji = getImage(frontmatter.emoji)
 
-  const one = <h1>{frontmatter.greetingPrefix} {" "} {frontmatter.greetingSuffix}</h1>;
+  const one = <h1>{frontmatter.greetingPrefix} <GatsbyImage image={emoji} alt="Hello" /> {frontmatter.greetingSuffix}</h1>;
   const two = <h2 className="big-heading">Tolu Akindele.</h2>;
-  const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitle}</span></h3>;
+  const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitleHighlight}</span></h3>;
   const four = (<p>{rawMarkdownBody}</p>);
   const five = (
     <a href="mailto:" className="email-link">

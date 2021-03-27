@@ -23,8 +23,17 @@ export const pageQuery = graphql`
             greetingPrefix
             greetingSuffix
             subtitlePrefix
-            subtitle
+            subtitleHighlight
             button
+            emoji {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 25,
+                  placeholder: BLURRED,
+                  formats: AUTO
+                )
+              }
+            }
           }
           rawMarkdownBody
         }
