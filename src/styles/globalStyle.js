@@ -17,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     font: "Roboto, Arial, sans-serif"
   }
+
+  .big-heading {
+    margin: 0;
+    font-size: clamp(40px, 8vw, 80px);
+  }
 `
 
 export default GlobalStyle
