@@ -61,25 +61,23 @@ const StyledHeroSection = styled.section`
   }
 `;
 
-const Hero = () => {
-  const one = <h1>Hi, my name is</h1>;
+const Hero = ({ content }) => {
+  const { frontmatter, rawMarkdownBody } = content
+
+  const one = <h1>{frontmatter.greetingPrefix} {" "} {frontmatter.greetingSuffix}</h1>;
   const two = <h2 className="big-heading">Tolu Akindele.</h2>;
-  const three = <h3 className="big-heading">I build <span className="highlighted">things for the web.</span></h3>;
-  const four = (
-    <p>
-      I'm a Vancouver-based full-stack developer who specializes in building exceptional web applications. Currently, I'm at LIVE WELL Exercise Clinic focused on creating and maintaining cutting edge software systems in the Health and Fitness space.
-    </p>
-  );
+  const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitle}</span></h3>;
+  const four = (<p>{rawMarkdownBody}</p>);
   const five = (
     <a href="mailto:" className="email-link">
-      Get In Touch
+      {frontmatter.button}
     </a>
   );
 
   const items = [one, two, three, four, five];
 
   return (
-    <StyledHeroSection>
+    <StyledHeroSection id="hero">
       { items.map((item) => (<div>{item}</div>)) }
     </StyledHeroSection>
   );

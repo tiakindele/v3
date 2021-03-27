@@ -1,7 +1,7 @@
 ---
 greetingPrefix: "Hi"
 greetingSuffix: "my name is"
-subtitlePrefix: "I create awesome "
+subtitlePrefix: "I build "
 subtitle: "things for the web."
 button: "Get In Touch"
 ---
