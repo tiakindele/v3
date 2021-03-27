@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 import GlobalStyle from "../styles/globalStyle"
 import Header from "./header"
@@ -30,4 +31,9 @@ const Layout = ({ children }) => {
     </StyledLayout>
   )
 }
+
+Layout.propTypes = {
+  children: PropTypes.any,
+}
+
 export default Layout

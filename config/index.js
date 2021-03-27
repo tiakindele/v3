@@ -1,8 +1,8 @@
 module.exports = {
   //-- SITE SETTINGS -----
-  author: "@tiakindele",
+  author: "Tolu Akindele",
   siteTitle: "Tolu Akindele",
-  siteShortTitle: "ta.", // Used as logo text in header, footer, and splash screen
+  siteShortTitle: "ta.",
   siteDescription: "Get to know more about Tolu.",
   siteUrl: "https://www.akindele.ca",
   siteLanguage: "en_US",
@@ -23,18 +23,17 @@ module.exports = {
   },
 
   //-- SOCIAL MEDIA SETTINGS -----
-  socialMedia: [
+  socials: [
     {
-      name: "Linkedin",
+      name: "linkedin",
       url: "https://www.linkedin.com/in/tiakindele/",
     },
     {
-      name: "Github",
-      url:
-        "https://github.com/tiakindele",
+      name: "github",
+      url: "https://github.com/tiakindele",
     },
     {
-      name: "Mail",
+      name: "mail",
       url: "mailto:tolu@akindele.ca",
     },
   ],
