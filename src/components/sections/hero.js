@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
+import { author } from "@config/index"
 
 const StyledHeroSection = styled.section`
   display: flex;
@@ -8,7 +11,7 @@ const StyledHeroSection = styled.section`
   align-items: center;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 100vh;
+  min-height: 90vh;
 
   h1 {
     margin: 0 0 10px 4px;
@@ -63,13 +66,13 @@ const StyledHeroSection = styled.section`
 `;
 
 const Hero = ({ content }) => {
-  const { frontmatter, rawMarkdownBody } = content
+  const { frontmatter, body } = content
   const emoji = getImage(frontmatter.emoji)
 
   const one = <h1>{frontmatter.greetingPrefix} <GatsbyImage image={emoji} alt="Hello" /> {frontmatter.greetingSuffix}</h1>;
-  const two = <h2 className="big-heading">Tolu Akindele.</h2>;
-  const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitleHighlight}</span></h3>;
-  const four = (<p>{rawMarkdownBody}</p>);
+  const two = <h2 className="big-heading">{author}.</h2>;
+  const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitleHighlight}</span>.</h3>;
+  const four = (<MDXRenderer>{body}</MDXRenderer>);
   const five = (
     <a href="mailto:" className="email-link">
       {frontmatter.button}

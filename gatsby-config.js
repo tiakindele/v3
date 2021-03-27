@@ -32,6 +32,7 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    `gatsby-plugin-mdx`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -44,7 +45,7 @@ module.exports = {
         background_color: colors.lightTheme.background,
         theme_color: colors.lightTheme.primary,
         display: `minimal-ui`,
-        icon: siteIcon, // This path is relative to the root of the site.
+        icon: siteIcon,
       },
     },
     `gatsby-plugin-styled-components`,

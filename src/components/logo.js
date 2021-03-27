@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { siteShortTitle } from "../../config"
+import { siteShortTitle } from "@config"
 
 const StyledLogo = styled.div`
   position: relative;

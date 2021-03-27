@@ -12,10 +12,12 @@ module.exports = {
   // -- THEME SETTINGS -----
   colors: {
     lightTheme: {
-      primary: "#000000"
+      primary: "#000000",
+      background: "#020202"
     },
     darkTheme: {
-      primary: "#FAFAFA"
+      primary: "#FAFAFA",
+      background: "#F2F2F2"
     },
   },
   fonts: {
