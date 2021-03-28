@@ -7,18 +7,17 @@ import { motion, useAnimation } from "framer-motion"
 import { author } from "@config/index"
 
 const StyledHeroSection = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
-  min-height: 90vh;
+  min-height: 100vh;
 
   h1 {
-    margin: 0 0 10px 0px;
-    font-size: clamp(24px, 5vw, 26px);
+    margin: 0 0 30px 4px;
+    font-size: clamp(var(--fz-md), 5vw, var(--fz-lg));
     font-weight: 400;
     display: flex;
+    font-family: var(--font-mono);
 
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
@@ -33,9 +32,7 @@ const StyledHeroSection = styled.section`
 
   p {
     margin: 20px 0 0;
-    max-width: 540px;
-    font-size: clamp(18px, 5vw, 20px);
-    line-height: 1.6rem;
+    max-width: 500px;
   }
 
   .email-link {

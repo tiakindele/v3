@@ -1,7 +1,17 @@
 import { createGlobalStyle } from "styled-components"
 import modernNormalize from "styled-modern-normalize"
 
+import Fonts from './fonts';
+import "@fontsource/poppins" // Defaults to weight 400.
+import "@fontsource/poppins/500.css" // Weight 500.
+import "@fontsource/poppins/600.css" // Weight 600.
+import "@fontsource/poppins/700.css" // Weight 600.
+import "@fontsource/poppins/400-italic.css" // Weight Italic 400.
+import "@fontsource/poppins/500-italic.css" // Weight Italic 500.
+import "@fontsource/poppins/600-italic.css" // Weight Italic 600.
+
 const GlobalStyle = createGlobalStyle`
+  ${Fonts};
   // Import normalize.css
   ${modernNormalize}
 
@@ -19,7 +29,8 @@ const GlobalStyle = createGlobalStyle`
     --green-tint: rgba(100, 255, 218, 0.1);
 
     --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    --font-mono: 'Poppins', 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    --font-logo: 'Poppins', -apple-system, system-ui, sans-serif;
 
     --fz-xxs: 12px;
     --fz-xs: 13px;

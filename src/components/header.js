@@ -8,7 +8,9 @@ import ThemeContext from "@context/themeContext"
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
+  position: fixed;
   top: 0;
+  z-index: 11;
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
@@ -76,14 +78,13 @@ const StyledLinks = styled.div`
     li {
       margin: 0 5px;
       position: relative;
-      counter-increment: item 1;
       font-size: var(--fz-xs);
 
       a {
         padding: 10px;
 
         &:before {
-          content: '0' counter(item) '.';
+          content: '';
           margin-right: 5px;
           color: var(--green);
           font-size: var(--fz-xxs);
