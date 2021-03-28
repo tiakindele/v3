@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "@components/layout"
 import Hero from "@components/sections/hero"
+import About from "@components/sections/about"
 import SEO from "@components/seo"
 import { seoTitleSuffix, siteDescription, siteLanguage } from "@config"
 
@@ -22,6 +23,7 @@ const IndexPage = ({ data }) => {
         lang={siteLanguage}
       />
       <Hero content={data.hero.edges[0].node}/>
+      <About content={data.about.edges[0].node}/>
     </Layout>
   )
 }
@@ -55,6 +57,25 @@ export const pageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   width: 25,
+                  placeholder: BLURRED,
+                  formats: AUTO
+                )
+              }
+            }
+          }
+        }
+      }
+    }
+    about: allMdx(filter: {fileAbsolutePath: {regex: "/index/about/"}}) {
+      edges {
+        node {
+          body
+          frontmatter {
+            title
+            skills
+            image {
+              childImageSharp {
+                gatsbyImageData(
                   placeholder: BLURRED,
                   formats: AUTO
                 )

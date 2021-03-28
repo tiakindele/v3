@@ -13,7 +13,7 @@ const StyledHeroSection = styled.section`
   min-height: 100vh;
 
   h1 {
-    margin: 0 0 30px 4px;
+    margin: 0 0 30px 0;
     font-size: clamp(var(--fz-md), 5vw, var(--fz-lg));
     font-weight: 400;
     display: flex;
