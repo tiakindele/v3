@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from 'prop-types';
-import IconGithub from "./Github"
-import IconLinkedIn from "./LinkedIn"
-import IconMail from "./Mail"
+import IconGithub from "./github"
+import IconLinkedIn from "./linkedin"
+import IconMail from "./mail"
 
 const Icon = ({ name, color }) => {
   switch (name.toLowerCase()) {
