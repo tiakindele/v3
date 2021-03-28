@@ -69,9 +69,22 @@ const Hero = ({ content }) => {
     pageLoadSequence()
   }, [eControls])
 
-  const one = <h1>{frontmatter.greetingPrefix} <motion.div animate={eControls} style={{ originX: 0.7, originY: 0.9 }}> <GatsbyImage image={emoji} alt="Hello" /> </motion.div> {frontmatter.greetingSuffix}</h1>;
+  const one = (
+    <h1>
+      {frontmatter.greetingPrefix}
+      <motion.div animate={eControls} style={{ originX: 0.7, originY: 0.9 }}>
+        <GatsbyImage image={emoji} alt="Hello" />
+      </motion.div>
+      {frontmatter.greetingSuffix}
+    </h1>
+  );
   const two = <h2 className="big-heading">{heroName}.</h2>;
-  const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitleHighlight}</span>.</h3>;
+  const three = (
+    <h3 className="big-heading">
+      {frontmatter.subtitlePrefix}
+      <span className="highlighted">{frontmatter.subtitleHighlight}</span>.
+    </h3>
+  );
   const four = (<MDXRenderer>{body}</MDXRenderer>);
   const five = (
     <a href={heroEmail} className="email-link">
