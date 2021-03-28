@@ -37,31 +37,16 @@ const StyledHeroSection = styled.section`
   }
 
   .email-link {
-    background-color: transparent;
-    border: 1px solid green;
-    border-radius: 4px;
-    padding: 1.25rem 1.75rem;
-    font-size: 16px;
-    font-family: var(--font-mono);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition: var(--transition);
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: grey;
-      outline: none;
-    }
-    &:after {
-      display: none !important;
-    }
+    ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
-    display: inline-block;
   }
 
   .highlighted {
     box-shadow: inset 0 -2.5rem 0 #cdf3e1;
+  }
+
+  .gatsby-image-wrapper {
+    width: unset;
   }
 `;
 
