@@ -78,7 +78,7 @@ const StyledLinks = styled.div`
     li {
       margin: 0 5px;
       position: relative;
-      font-size: var(--fz-xs);
+      font-size: var(--fz-md);
 
       a {
         padding: 10px;

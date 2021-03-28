@@ -4,7 +4,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { motion, useAnimation } from "framer-motion"
 
-import { author } from "@config/index"
+import { author, email } from "@config"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -41,7 +41,7 @@ const StyledHeroSection = styled.section`
   }
 
   .highlighted {
-    box-shadow: inset 0 -2.5rem 0 #cdf3e1;
+    box-shadow: inset 0 -2.5rem 0 ${({ theme }) => theme.colors.buttonTint};
   }
 
   .gatsby-image-wrapper {
@@ -53,6 +53,8 @@ const StyledHeroSection = styled.section`
 const Hero = ({ content }) => {
   const { frontmatter, body } = content
   const emoji = getImage(frontmatter.emoji)
+  const heroName = author
+  const heroEmail = "mailto:" + email
 
   const eControls = useAnimation()
 
@@ -68,11 +70,11 @@ const Hero = ({ content }) => {
   }, [eControls])
 
   const one = <h1>{frontmatter.greetingPrefix} <motion.div animate={eControls} style={{ originX: 0.7, originY: 0.9 }}> <GatsbyImage image={emoji} alt="Hello" /> </motion.div> {frontmatter.greetingSuffix}</h1>;
-  const two = <h2 className="big-heading">{author}.</h2>;
+  const two = <h2 className="big-heading">{heroName}.</h2>;
   const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitleHighlight}</span>.</h3>;
   const four = (<MDXRenderer>{body}</MDXRenderer>);
   const five = (
-    <a href="mailto:" className="email-link">
+    <a href={heroEmail} className="email-link">
       {frontmatter.button}
     </a>
   );
