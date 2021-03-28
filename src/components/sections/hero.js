@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { motion, useAnimation } from "framer-motion"
 
 import { author } from "@config/index"
 
@@ -14,9 +15,10 @@ const StyledHeroSection = styled.section`
   min-height: 90vh;
 
   h1 {
-    margin: 0 0 10px 4px;
+    margin: 0 0 10px 0px;
     font-size: clamp(24px, 5vw, 26px);
     font-weight: 400;
+    display: flex;
 
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
@@ -47,6 +49,7 @@ const StyledHeroSection = styled.section`
 
   .gatsby-image-wrapper {
     width: unset;
+    margin: 0px 12px 0px 3px;
   }
 `;
 
@@ -54,7 +57,20 @@ const Hero = ({ content }) => {
   const { frontmatter, body } = content
   const emoji = getImage(frontmatter.emoji)
 
-  const one = <h1>{frontmatter.greetingPrefix} <GatsbyImage image={emoji} alt="Hello" /> {frontmatter.greetingSuffix}</h1>;
+  const eControls = useAnimation()
+
+  // Start Animations after the splashScreen sequence is done
+  useEffect(() => {
+    const pageLoadSequence = async () => {
+      eControls.start({
+        rotate: [20, 0, 40, 0, 30, 20, 20, 20, 20, 20, 20],
+        transition: { duration: 2.5, loop: 3, repeatDelay: 1 },
+      })
+    }
+    pageLoadSequence()
+  }, [eControls])
+
+  const one = <h1>{frontmatter.greetingPrefix} <motion.div animate={eControls} style={{ originX: 0.7, originY: 0.9 }}> <GatsbyImage image={emoji} alt="Hello" /> </motion.div> {frontmatter.greetingSuffix}</h1>;
   const two = <h2 className="big-heading">{author}.</h2>;
   const three = <h3 className="big-heading">{frontmatter.subtitlePrefix} <span className="highlighted">{frontmatter.subtitleHighlight}</span>.</h3>;
   const four = (<MDXRenderer>{body}</MDXRenderer>);
