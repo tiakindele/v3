@@ -16,21 +16,9 @@ const GlobalStyle = createGlobalStyle`
   ${modernNormalize}
 
   :root {
-    --dark-navy: #020c1b;
-    --navy: #0a192f;
     --light-navy: #112240;
-    --lightest-navy: #233554;
     --navy-shadow: rgba(2, 12, 27, 0.7);
-    --slate: #8892b0;
-    --light-slate: #a8b2d1;
-    --lightest-slate: #ccd6f6;
     --white: #e6f1ff;
-    --green: #64ffda;
-    --green-tint: rgba(100, 255, 218, 0.1);
-
-    --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-    --font-mono: 'Poppins', 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-    --font-logo: 'Poppins', -apple-system, system-ui, sans-serif;
 
     --fz-xxs: 12px;
     --fz-xs: 13px;
@@ -71,12 +59,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: var(--lightest-navy);
-    color: var(--lightest-slate);
+    background-color: ${({ theme }) => theme.colors.selectionBg};
+    color: ${({ theme }) => theme.colors.selectionText};
   }
 
   :focus {
-    outline: 2px dashed var(--green);
+    outline: 2px dashed ${({ theme }) => theme.colors.link};
     outline-offset: 3px;
   }
 
@@ -89,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
-    font-family: var(--font-sans);
+    font-family: ${({ theme }) => theme.fonts.primary};
     font-size: var(--fz-xl);
     line-height: 1.3;
 
@@ -178,7 +166,7 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     margin: 0 0 10px 0;
     font-weight: 600;
-    color: var(--lightest-slate);
+    color: ${({ theme }) => theme.colors.header};
     line-height: 1.1;
   }
 
@@ -207,8 +195,8 @@ const GlobalStyle = createGlobalStyle`
       counter-increment: section;
       content: '0' counter(section) '.';
       margin-right: 10px;
-      color: var(--green);
-      font-family: var(--font-mono);
+      color: ${({ theme }) => theme.colors.tertiary};
+      font-family: ${({ theme }) => theme.fonts.secondary};
       font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
       font-weight: 400;
 
@@ -226,7 +214,7 @@ const GlobalStyle = createGlobalStyle`
       width: 300px;
       height: 1px;
       margin-left: 20px;
-      background-color: var(--lightest-navy);
+      background-color: ${({ theme }) => theme.colors.selectionBg};
 
       @media (max-width: 1080px) {
         width: 200px;
@@ -275,7 +263,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: var(--green);
+      color: ${({ theme }) => theme.colors.link};
     }
 
     &.inline-link {
@@ -339,14 +327,14 @@ const GlobalStyle = createGlobalStyle`
           content: '▹';
           position: absolute;
           left: 0;
-          color: var(--green);
+          color: ${({ theme }) => theme.colors.tertiary};
         }
       }
     }
   }
 
   blockquote {
-    border-left-color: var(--green);
+    border-left-color: ${({ theme }) => theme.colors.tertiary};
     border-left-style: solid;
     border-left-width: 1px;
     margin-left: 0px;
@@ -360,7 +348,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    background-color: var(--lightest-navy);
+    background-color: ${({ theme }) => theme.colors.selectionBg};
     height: 1px;
     border-width: 0px;
     border-style: initial;
@@ -370,26 +358,26 @@ const GlobalStyle = createGlobalStyle`
   }
 
   code {
-    font-family: var(--font-mono);
+    font-family: ${({ theme }) => theme.fonts.secondary};
     font-size: var(--fz-md);
   }
 
   #logo {
-    color: var(--green);
+    color: ${({ theme }) => theme.colors.tertiary};
   }
 
   .overline {
-    color: var(--green);
-    font-family: var(--font-mono);
+    color: ${({ theme }) => theme.colors.tertiary};
+    font-family: ${({ theme }) => theme.fonts.secondary};
     font-size: var(--fz-md);
     font-weight: 400;
   }
 
   .subtitle {
-    color: var(--green);
+    color: ${({ theme }) => theme.colors.tertiary};
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
-    font-family: var(--font-mono);
+    font-family: ${({ theme }) => theme.fonts.secondary};
     font-weight: 400;
     line-height: 1.5;
     @media (max-width: 1080px) {
@@ -409,7 +397,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    color: var(--green);
+    color: ${({ theme }) => theme.colors.tertiary};
 
     .arrow {
       display: block;
@@ -419,7 +407,7 @@ const GlobalStyle = createGlobalStyle`
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
-      font-family: var(--font-mono);
+      font-family: ${({ theme }) => theme.fonts.secondary};
       font-size: var(--fz-sm);
       font-weight: 600;
       line-height: 1.5;

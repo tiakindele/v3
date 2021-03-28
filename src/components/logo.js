@@ -9,7 +9,7 @@ const StyledLogo = styled.div`
 
   font-size: 1.75rem;
   font-weight: 700;
-  font-family: var(--font-logo);
+  font-family: ${({ theme }) => theme.fonts.secondary};
 
   /* Disable effects when sidebar is open */
   filter: none !important;
@@ -17,10 +17,12 @@ const StyledLogo = styled.div`
   user-select: auto !important;
 `
 
-const Logo = () => (
-  <StyledLogo>
-    {siteShortTitle}
-  </StyledLogo>
-)
+const Logo = () => {
+  return (
+    <StyledLogo>
+      {siteShortTitle}
+    </StyledLogo>
+  )
+}
 
 export default Logo

@@ -1,12 +1,12 @@
 import { css } from 'styled-components';
 
 const button = css`
-  color: var(--green);
+  color: ${({ theme }) => theme.colors.tertiary};
   background-color: transparent;
-  border: 1px solid var(--green);
+  border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
   border-radius: var(--border-radius);
   font-size: var(--fz-xs);
-  font-family: var(--font-mono);
+  font-family: ${({ theme }) => theme.fonts.secondary};
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
@@ -16,7 +16,7 @@ const button = css`
   &:hover,
   &:focus,
   &:active {
-    background-color: var(--green-tint);
+    background-color: ${({ theme }) => theme.colors.buttonTint};
     outline: none;
   }
   &:after {
@@ -48,7 +48,7 @@ const mixins = {
     &:hover,
     &:active,
     &:focus {
-      color: var(--green);
+      color: ${({ theme }) => theme.colors.link};
       outline: 0;
     }
   `,
@@ -60,17 +60,17 @@ const mixins = {
     position: relative;
     transition: var(--transition);
     cursor: pointer;
-    color: var(--green);
+    color: ${({ theme }) => theme.colors.link};
     &:hover,
     &:focus,
     &:active {
-      color: var(--green);
+      color: ${({ theme }) => theme.colors.link};
       outline: 0;
       &:after {
         width: 100%;
       }
       & > * {
-        color: var(--green) !important;
+        color: ${({ theme }) => theme.colors.link} !important;
         transition: var(--transition);
       }
     }
@@ -81,7 +81,7 @@ const mixins = {
       height: 1px;
       position: relative;
       bottom: 0.37em;
-      background-color: var(--green);
+      background-color: ${({ theme }) => theme.colors.link};
       transition: var(--transition);
       opacity: 0.5;
     }
@@ -90,13 +90,13 @@ const mixins = {
   button,
 
   smallButton: css`
-    color: var(--green);
+    color: ${({ theme }) => theme.colors.link};
     background-color: transparent;
-    border: 1px solid var(--green);
+    border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
     font-size: var(--fz-xs);
-    font-family: var(--font-mono);
+    font-family: ${({ theme }) => theme.fonts.secondary};
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
@@ -104,7 +104,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background-color: var(--green-tint);
+      background-color: ${({ theme }) => theme.colors.buttonTint};
       outline: none;
     }
     &:after {
@@ -113,13 +113,13 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--green);
+    color: ${({ theme }) => theme.colors.link};
     background-color: transparent;
-    border: 1px solid var(--green);
+    border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
     border-radius: var(--border-radius);
     padding: 1.25rem 1.75rem;
     font-size: var(--fz-sm);
-    font-family: var(--font-mono);
+    font-family: ${({ theme }) => theme.fonts.secondary};
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
@@ -127,7 +127,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background-color: var(--green-tint);
+      background-color: ${({ theme }) => theme.colors.buttonTint};
       outline: none;
     }
     &:after {
@@ -158,7 +158,7 @@ const mixins = {
         content: '▹';
         position: absolute;
         left: 0;
-        color: var(--green);
+        color: ${({ theme }) => theme.colors.tertiary};
       }
     }
   `,

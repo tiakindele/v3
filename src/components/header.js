@@ -32,8 +32,8 @@ const StyledNav = styled.nav`
   ${({ theme }) => theme.mixins.flexBetween};
   position: relative;
   width: 100%;
-  color: var(--lightest-slate);
-  font-family: var(--font-mono);
+  color: ${({ theme }) => theme.colors.header};
+  font-family: ${({ theme }) => theme.fonts.secondary};
   counter-reset: item 0;
   z-index: 12;
 
@@ -41,14 +41,14 @@ const StyledNav = styled.nav`
     ${({ theme }) => theme.mixins.flexCenter};
 
     a {
-      color: var(--green);
+      color: ${({ theme }) => theme.colors.link};
       width: 42px;
       height: 42px;
 
       &:hover,
       &:focus {
         svg {
-          fill: var(--green-tint);
+          fill: ${({ theme }) => theme.colors.linkHover};
         }
       }
 
@@ -86,7 +86,7 @@ const StyledLinks = styled.div`
         &:before {
           content: '';
           margin-right: 5px;
-          color: var(--green);
+          color: ${({ theme }) => theme.colors.link};
           font-size: var(--fz-xxs);
           text-align: right;
         }

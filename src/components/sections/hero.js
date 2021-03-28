@@ -17,7 +17,7 @@ const StyledHeroSection = styled.section`
     font-size: clamp(var(--fz-md), 5vw, var(--fz-lg));
     font-weight: 400;
     display: flex;
-    font-family: var(--font-mono);
+    font-family: ${({ theme }) => theme.fonts.secondary};
 
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
@@ -26,7 +26,7 @@ const StyledHeroSection = styled.section`
 
   h3 {
     margin-top: 10px;
-    color: var(--slate);
+    color: ${({ theme }) => theme.colors.darkestHeader};
     line-height: 0.9;
   }
 
