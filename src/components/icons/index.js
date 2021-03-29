@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import IconGithub from "./github";
-import IconLinkedIn from "./linkedin";
-import IconMail from "./mail";
-import IconFigma from "./figma";
-import IconReact from "./reactIcon";
-import IconSpotify from "./spotify";
-import IconWordpress from "./wordpress";
+import IconGithub from "@components/icons/github";
+import IconLinkedIn from "@components/icons/linkedin";
+import IconMail from "@components/icons/mail";
+import IconFigma from "@components/icons/figma";
+import IconReact from "@components/icons/reactIcon";
+import IconSpotify from "@components/icons/spotify";
+import IconWordpress from "@components/icons/wordpress";
 
 const Icon = ({ name, color }) => {
   switch (name.toLowerCase()) {
