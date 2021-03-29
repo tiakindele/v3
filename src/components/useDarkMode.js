@@ -4,8 +4,10 @@ export const useDarkMode = () => {
   const [mountedComponent, setMountedComponent] = useState(false)
 
   const setMode = mode => {
-    window.localStorage.setItem('theme', mode);
-    setTheme(mode);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('theme', mode);
+      setTheme(mode);
+    }
   };
 
   const themeToggler = () => {
