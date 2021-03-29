@@ -40,10 +40,6 @@ const StyledHeroSection = styled.section`
     margin-top: 50px;
   }
 
-  .highlighted {
-    box-shadow: inset 0 -2.5rem 0 ${({ theme }) => theme.colors.buttonTint};
-  }
-
   .gatsby-image-wrapper {
     width: unset;
     margin: 0px 12px 0px 3px;

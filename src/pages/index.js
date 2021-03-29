@@ -5,6 +5,7 @@ import Layout from "@components/layout"
 import Hero from "@components/sections/hero"
 import About from "@components/sections/about"
 import Interests from "@components/sections/interests"
+import Contact from "@components/sections/contact"
 import SEO from "@components/seo"
 import { seoTitleSuffix, siteDescription, siteLanguage } from "@config"
 
@@ -26,6 +27,7 @@ const IndexPage = ({ data }) => {
       <Hero content={data.hero.edges[0].node}/>
       <About content={data.about.edges[0].node}/>
       <Interests content={data.interests.edges[0].node}/>
+      <Contact/>
     </Layout>
   )
 }

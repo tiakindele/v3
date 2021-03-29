@@ -356,6 +356,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  .highlighted {
+    box-shadow: inset 0 -2.5rem 0 ${({ theme }) => theme.colors.buttonTint};
+  }
+
   .subtitle {
     color: ${({ theme }) => theme.colors.tertiary};
     margin: 0 0 20px 0;
