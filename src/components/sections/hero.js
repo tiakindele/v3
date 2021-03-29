@@ -92,7 +92,7 @@ const Hero = ({ content }) => {
 
   return (
     <StyledHeroSection id="hero">
-      { items.map((item) => (<div>{item}</div>)) }
+      { items && items.map((item, key) => (<div key={key}>{item}</div>)) }
     </StyledHeroSection>
   );
 };

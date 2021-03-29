@@ -11,7 +11,7 @@ import { seoTitleSuffix, siteDescription, siteLanguage } from "@config"
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.index.edges[0].node
-  const { seoTitle, useSeoTitleSuffix, useSplashScreen } = frontmatter
+  const { seoTitle, useSeoTitleSuffix } = frontmatter
 
   return (
     <Layout>

@@ -117,7 +117,7 @@ const Header = () => {
             { menu &&
               menu.map(({ name, url }, key) => {
                 return (
-                  <li><Link key={key} to={url}>{name}</Link></li>
+                  <li key={key}><Link key={key} to={url}>{name}</Link></li>
                 )
               })}
           </ol>

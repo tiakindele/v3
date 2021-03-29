@@ -4,18 +4,20 @@ export const useDarkMode = () => {
   const [mountedComponent, setMountedComponent] = useState(false)
 
   const setMode = mode => {
-    window.localStorage.setItem('theme', mode)
-    setTheme(mode)
+    window.localStorage.setItem('theme', mode);
+    setTheme(mode);
   };
 
   const themeToggler = () => {
-    theme === 'light' ? setMode('dark') : setMode('light')
+    if (typeof window !== 'undefined') {
+      theme === 'light' ? setMode('dark') : setMode('light');
+    }
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme');
-    localTheme && setTheme(localTheme)
-    setMountedComponent(true)
+    const localTheme = typeof window === 'undefined' ? null : window.localStorage.getItem('theme');
+    localTheme && setTheme(localTheme);
+    setMountedComponent(true);
   }, []);
   return [theme, themeToggler, mountedComponent]
 };

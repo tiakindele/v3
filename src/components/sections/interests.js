@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import Icon from "@components/icons/index"
-import { motion, useAnimation } from "framer-motion"
 
 const StyledInterestsSection = styled.section`
   max-width: 700px;
@@ -61,7 +60,7 @@ const Interests = ({ content }) => {
         <StyledText>
           <ul className="skills-list">
             {interests && interests.map(
-              (interest, i) => <li key={i}><Icon name={interest.icon} color="black" />{interest.name}</li>
+              ({ name, icon }, key) => <li key={key}><Icon name={icon} color="black" />{name}</li>
             )}
           </ul>
         </StyledText>
