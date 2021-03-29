@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "@components/layout"
 import Hero from "@components/sections/hero"
 import About from "@components/sections/about"
+import Interests from "@components/sections/interests"
 import SEO from "@components/seo"
 import { seoTitleSuffix, siteDescription, siteLanguage } from "@config"
 
@@ -24,6 +25,7 @@ const IndexPage = ({ data }) => {
       />
       <Hero content={data.hero.edges[0].node}/>
       <About content={data.about.edges[0].node}/>
+      <Interests content={data.interests.edges[0].node}/>
     </Layout>
   )
 }
@@ -80,6 +82,21 @@ export const pageQuery = graphql`
                   formats: AUTO
                 )
               }
+            }
+          }
+        }
+      }
+    }
+    interests: allMdx(filter: {fileAbsolutePath: {regex: "/index/interests/"}}) {
+      edges {
+        node {
+          frontmatter {
+            title
+          }
+          exports {
+            interests {
+              icon
+              name
             }
           }
         }
