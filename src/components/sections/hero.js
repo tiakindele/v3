@@ -48,7 +48,7 @@ const StyledHeroSection = styled.section`
 
 const Hero = ({ content }) => {
   const { frontmatter, body } = content
-  const emoji = getImage(frontmatter.emoji)
+  const heroEmoji = getImage(frontmatter.heroEmoji)
   const heroName = author
   const heroEmail = "mailto:" + email
 
@@ -69,7 +69,7 @@ const Hero = ({ content }) => {
     <h1>
       {frontmatter.greetingPrefix}
       <motion.div animate={eControls} style={{ originX: 0.7, originY: 0.9 }}>
-        <GatsbyImage image={emoji} alt="Hello" />
+        <GatsbyImage image={heroEmoji} alt="Hello" />
       </motion.div>
       {frontmatter.greetingSuffix}
     </h1>

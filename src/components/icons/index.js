@@ -7,6 +7,7 @@ import IconFigma from "./Figma";
 import IconReact from "./ReactIcon";
 import IconSpotify from "./Spotify";
 import IconWordpress from "./Wordpress";
+import IconExternal from "./External";
 
 const Icon = ({ name, color }) => {
   switch (name.toLowerCase()) {
@@ -24,6 +25,8 @@ const Icon = ({ name, color }) => {
       return <IconSpotify color={color} />
     case "wordpress":
       return <IconWordpress color={color} />
+    case "external":
+      return <IconExternal color={color} />
     default:
       return null
   }

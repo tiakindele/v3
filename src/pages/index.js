@@ -6,6 +6,7 @@ import Hero from "@components/sections/hero"
 import About from "@components/sections/about"
 import Interests from "@components/sections/interests"
 import Contact from "@components/sections/contact"
+import Projects from "@components/sections/projects"
 import SEO from "@components/seo"
 import { seoTitleSuffix, siteDescription, siteLanguage } from "@config"
 
@@ -27,6 +28,7 @@ const IndexPage = ({ data }) => {
       <Hero content={data.hero.edges[0].node}/>
       <About content={data.about.edges[0].node}/>
       <Interests content={data.interests.edges[0].node}/>
+      <Projects content={data.projects.edges}/>
       <Contact/>
     </Layout>
   )
@@ -57,7 +59,7 @@ export const pageQuery = graphql`
             subtitlePrefix
             subtitleHighlight
             button
-            emoji {
+            heroEmoji {
               childImageSharp {
                 gatsbyImageData(
                   width: 25,
@@ -100,6 +102,40 @@ export const pageQuery = graphql`
               icon
               name
             }
+          }
+        }
+      }
+    }
+    projects: allMdx(
+      filter: {
+        fileAbsolutePath: { regex: "/index/projects/" }
+        frontmatter: { visible: { eq: true } }
+      }
+      sort: { fields: [frontmatter___position], order: ASC }
+    ) {
+      edges {
+        node {
+          body
+          frontmatter {
+            title
+            category
+            emoji
+            external
+            github
+            screenshot {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: BLURRED,
+                  formats: AUTO,
+                  quality: 90
+                )
+              }
+            }
+            tags
+            position
+            buttonVisible
+            buttonUrl
+            buttonText
           }
         }
       }

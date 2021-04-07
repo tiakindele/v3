@@ -60,7 +60,7 @@ const Interests = ({ content }) => {
         <StyledText>
           <ul className="skills-list">
             {interests && interests.map(
-              ({ name, icon }, key) => <li key={key}><Icon name={icon} color="black" />{name}</li>
+              ({ name, icon }, key) => <li key={key}><Icon name={icon} />{name}</li>
             )}
           </ul>
         </StyledText>
