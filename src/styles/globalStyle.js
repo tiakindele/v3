@@ -356,8 +356,20 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
-  .highlighted {
+  .highlighted-lg {
     box-shadow: inset 0 -2.5rem 0 ${({ theme }) => theme.colors.buttonTint};
+    transition: var(--transition);
+    &:hover {
+      box-shadow: inset 0 -5rem 0 ${({ theme }) => theme.colors.buttonTint};
+    }
+  }
+
+  .highlighted-sm {
+    box-shadow: inset 0 -.5rem 0 ${({ theme }) => theme.colors.buttonTint};
+    transition: var(--transition);
+    &:hover {
+      box-shadow: inset 0 -1.5rem 0 ${({ theme }) => theme.colors.buttonTint};
+    }
   }
 
   .subtitle {

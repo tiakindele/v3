@@ -8,7 +8,7 @@ import Interests from "@components/sections/interests"
 import Contact from "@components/sections/contact"
 import Projects from "@components/sections/projects"
 import SEO from "@components/seo"
-import { seoTitleSuffix, siteDescription, siteLanguage } from "@config"
+import { seoTitleSuffix, siteDescription, siteLanguage, siteImage } from "@config"
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.index.edges[0].node
@@ -25,6 +25,7 @@ const IndexPage = ({ data }) => {
             }
           description={siteDescription}
           lang={siteLanguage}
+          image={siteImage}
         />
         <Hero content={data.hero.edges[0].node}/>
         <About content={data.about.edges[0].node}/>

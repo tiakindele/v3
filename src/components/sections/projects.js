@@ -355,7 +355,7 @@ const Projects = ({ content }) => {
                     {tags.length && (
                       <ul className="project-tags-list">
                         {tags.map((tags, i) => (
-                          <li className="highlighted" key={i}>{tags}</li>
+                          <li className="highlighted-sm" key={i}>{tags}</li>
                         ))}
                       </ul>
                     )}

@@ -46,7 +46,7 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="title">say <span className="highlighted">hello</span></h2>
+      <h2 className="title">say <span className="highlighted-lg">hello</span></h2>
 
       <p>
         I am always interested in making new connections and having conversations! Looking forward to hearing from you.

@@ -4,6 +4,7 @@ const {
   siteShortTitle,
   siteDescription,
   siteIcon,
+  siteImage,
   siteUrl,
   colors,
 } = require(`./config`)
@@ -14,6 +15,7 @@ module.exports = {
     title: siteTitle,
     description: siteDescription,
     siteUrl: siteUrl,
+    image: siteImage,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

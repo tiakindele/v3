@@ -78,7 +78,7 @@ const Hero = ({ content }) => {
   const three = (
     <h3 className="big-heading">
       {frontmatter.subtitlePrefix}
-      <span className="highlighted">{frontmatter.subtitleHighlight}</span>.
+      <span className="highlighted-lg">{frontmatter.subtitleHighlight}</span>.
     </h3>
   );
   const four = (<MDXRenderer>{body}</MDXRenderer>);
