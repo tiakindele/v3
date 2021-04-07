@@ -6,6 +6,17 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import Icon from "@components/icons/index";
 
+const StyledProjectsSection = styled.section`
+  .view-more {
+    text-align: center;
+    margin: 30px;
+
+    .see-more-link {
+      ${({ theme }) => theme.mixins.bigButton};
+      margin-top: 50px;
+    }
+  }
+`
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
 
@@ -309,7 +320,7 @@ const StyledProject = styled.li`
 `;
 
 const Projects = ({ content }) => {
-  const sectionDetails = content[0].node
+  const sectionDetails = content[0].node.frontmatter
   const projects = content.slice(1, content.length)
 
   const revealTitle = useRef(null);
@@ -320,8 +331,8 @@ const Projects = ({ content }) => {
   }, []);
 
   return (
-    <section id="projects">
-      <h2 className="section-heading" ref={revealTitle}>{sectionDetails.frontmatter.title}</h2>
+    <StyledProjectsSection id="projects">
+      <h2 className="section-heading" ref={revealTitle}>{sectionDetails.title}</h2>
 
       <StyledProjectsGrid>
         {projects &&
@@ -333,7 +344,7 @@ const Projects = ({ content }) => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">{frontmatter.emoji} {frontmatter.category}</p>
+                    <p className="project-overline">{emoji} {category}</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
@@ -369,7 +380,13 @@ const Projects = ({ content }) => {
             );
           })}
       </StyledProjectsGrid>
-    </section>
+
+      <div className="view-more">
+        <a className="see-more-link" href={sectionDetails.buttonUrl}>
+          {sectionDetails.buttonText}
+        </a>
+      </div>
+    </StyledProjectsSection>
   );
 };
 
