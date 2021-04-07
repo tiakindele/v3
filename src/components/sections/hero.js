@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { motion, useAnimation } from "framer-motion"
-
+import { navDelay } from '@utils';
 import { author, email } from "@config"
 
 const StyledHeroSection = styled.section`
@@ -47,15 +47,15 @@ const StyledHeroSection = styled.section`
 `;
 
 const Hero = ({ content }) => {
-  const { frontmatter, body } = content
-  const heroEmoji = getImage(frontmatter.heroEmoji)
-  const heroName = author
-  const heroEmail = "mailto:" + email
+  const { frontmatter, body } = content;
+  const [isMounted, setIsMounted] = useState(true);
+  const heroEmoji = getImage(frontmatter.heroEmoji);
+  const heroName = author;
+  const heroEmail = "mailto:" + email;
+  const eControls = useAnimation();
 
-  const eControls = useAnimation()
-
-  // Start Animations after the splashScreen sequence is done
   useEffect(() => {
+    const timeout = setTimeout(() => setIsMounted(true), navDelay)
     const pageLoadSequence = async () => {
       eControls.start({
         rotate: [20, 0, 40, 0, 30, 20, 20, 20, 20, 20, 20],
@@ -63,6 +63,7 @@ const Hero = ({ content }) => {
       })
     }
     pageLoadSequence()
+    return () => clearTimeout(timeout);
   }, [eControls])
 
   const one = (
@@ -92,7 +93,10 @@ const Hero = ({ content }) => {
 
   return (
     <StyledHeroSection id="hero">
-      { items && items.map((item, key) => (<div key={key}>{item}</div>)) }
+      {isMounted &&
+        items &&
+        items.map((item, key) => (<div key={key}>{item}</div>))
+      }
     </StyledHeroSection>
   );
 };

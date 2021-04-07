@@ -324,10 +324,12 @@ const Projects = ({ content }) => {
   const projects = content.slice(1, content.length)
 
   const revealTitle = useRef(null);
+  const revealMore = useRef(null);
   const revealProjects = useRef([]);
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());
-    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    sr.reveal(revealMore.current, srConfig());
+    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig()));
   }, []);
 
   return (
@@ -381,7 +383,7 @@ const Projects = ({ content }) => {
           })}
       </StyledProjectsGrid>
 
-      <div className="view-more">
+      <div className="view-more" ref={revealMore}>
         <a className="see-more-link" href={sectionDetails.buttonUrl}>
           {sectionDetails.buttonText}
         </a>

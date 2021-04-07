@@ -24,7 +24,8 @@ const StyledLayout = styled.div`
   }
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
+  const isHome = location.pathname === '/';
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
@@ -35,7 +36,7 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <ThemeContext.Provider value={{themeToggler: themeToggler, theme: theme}}>
         <StyledLayout>
-          <Header />
+          <Header isHome={isHome}/>
           <main id="main-content">{children}</main>
           <Footer />
         </StyledLayout>

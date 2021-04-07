@@ -1,10 +1,11 @@
-import React, { useContext } from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-
-import { navLinks } from "@config"
-import Logo from "./logo"
-import ThemeContext from "@context/themeContext"
+import React, { useContext, useState, useEffect } from "react";
+import { Link } from "gatsby";
+import styled, { css } from "styled-components";
+import { useScrollDirection } from '@hooks';
+import { navLinks } from "@config";
+import Logo from "./logo";
+import ThemeContext from "@context/themeContext";
+import PropTypes from 'prop-types';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -19,6 +20,25 @@ const StyledHeader = styled.header`
   pointer-events: auto !important;
   user-select: auto !important;
   backdrop-filter: blur(10px);
+
+  ${props =>
+    props.scrollDirection === 'up' &&
+    !props.scrolledToTop &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(0px);
+      background-color: ${({ theme }) => theme.colors.background};
+      box-shadow: 0 10px 30px -10px ${({ theme }) => theme.colors.boxShadow};
+    `};
+
+  ${props =>
+    props.scrollDirection === 'down' &&
+    !props.scrolledToTop &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(calc(var(--nav-scroll-height) * -1));
+      box-shadow: 0 10px 30px -10px ${({ theme }) => theme.colors.boxShadow};
+    `};
 
   @media (max-width: 1080px) {
     padding: 0 40px;
@@ -101,31 +121,62 @@ const StyledLinks = styled.div`
   }
 `;
 
-const Header = () => {
-  const { menu } = navLinks
+const Header = ({ isHome }) => {
+  const [isMounted, setIsMounted] = useState(!isHome);
+  const scrollDirection = useScrollDirection('down');
+  const [scrolledToTop, setScrolledToTop] = useState(true);
+
+  const handleScroll = () => {
+    setScrolledToTop(window.pageYOffset < 50);
+  };
+
   const themeContext = useContext(ThemeContext);
+  const { menu } = navLinks;
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsMounted(true);
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <StyledHeader>
+    <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>
-        <Link to="/" aria-label="home">
-          <Logo />
-        </Link>
+        {isMounted && (
+          <Link to="/" aria-label="home">
+            <Logo />
+          </Link>
+        )}
 
         <StyledLinks>
           <ol>
-            { menu &&
+            {isMounted &&
+              menu &&
               menu.map(({ name, url }, key) => {
                 return (
                   <li key={key}><Link key={key} to={url}>{name}</Link></li>
                 )
               })}
           </ol>
-          <button className="toggler-button" onClick={themeContext.themeToggler}>switch theme</button>
+
+          {isMounted && (
+            <button className="toggler-button" onClick={themeContext.themeToggler}>switch theme</button>
+          )}
         </StyledLinks>
       </StyledNav>
     </StyledHeader>
-  )
-}
+  );
+};
+
+Header.propTypes = {
+  isHome: PropTypes.bool,
+};
 
 export default Header

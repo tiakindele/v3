@@ -10,12 +10,12 @@ import Projects from "@components/sections/projects"
 import SEO from "@components/seo"
 import { seoTitleSuffix, siteDescription, siteLanguage, siteImage } from "@config"
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const { frontmatter } = data.index.edges[0].node
   const { seoTitle, useSeoTitleSuffix } = frontmatter
 
   return (
-    <Layout>
+    <Layout location={location}>
       <main className="fillHeight">
         <SEO
           title={
