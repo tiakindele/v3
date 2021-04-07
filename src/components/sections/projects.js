@@ -208,7 +208,7 @@ const StyledProject = styled.li`
     position: relative;
     margin-top: 10px;
     margin-left: -10px;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.primary};
 
     a {
       ${({ theme }) => theme.mixins.flexCenter};
@@ -225,12 +225,13 @@ const StyledProject = styled.li`
       svg {
         width: 20px;
         height: 20px;
+        color: ${({ theme }) => theme.colors.primary};
         transition: var(--transition);
 
         &:hover,
         &:focus,
         &:active {
-          color: ${({ theme }) => theme.colors.darkerHeader};
+          color: ${({ theme }) => theme.colors.link};
         }
       }
     }
