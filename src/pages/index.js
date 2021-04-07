@@ -16,20 +16,22 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO
-        title={
-          useSeoTitleSuffix
-            ? `${seoTitle} - ${seoTitleSuffix}`
-            : `${seoTitle}`
-          }
-        description={siteDescription}
-        lang={siteLanguage}
-      />
-      <Hero content={data.hero.edges[0].node}/>
-      <About content={data.about.edges[0].node}/>
-      <Interests content={data.interests.edges[0].node}/>
-      <Projects content={data.projects.edges}/>
-      <Contact/>
+      <main className="fillHeight">
+        <SEO
+          title={
+            useSeoTitleSuffix
+              ? `${seoTitle} - ${seoTitleSuffix}`
+              : `${seoTitle}`
+            }
+          description={siteDescription}
+          lang={siteLanguage}
+        />
+        <Hero content={data.hero.edges[0].node}/>
+        <About content={data.about.edges[0].node}/>
+        <Interests content={data.interests.edges[0].node}/>
+        <Projects content={data.projects.edges}/>
+        <Contact/>
+      </main>
     </Layout>
   )
 }

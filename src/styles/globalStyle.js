@@ -130,10 +130,10 @@ const GlobalStyle = createGlobalStyle`
     }
 
     &.fillHeight {
-      padding: 0 150px;
+      padding: 0;
 
       @media (max-width: 1080px) {
-        padding: 0 100px;
+        padding: 0 50px;
       }
       @media (max-width: 768px) {
         padding: 0 50px;

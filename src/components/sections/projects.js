@@ -131,7 +131,7 @@ const StyledProject = styled.li`
     }
 
     @media (max-width: 768px) {
-      color: var(--white);
+      color: ${({ theme }) => theme.colors.header};
 
       a {
         position: static;
@@ -225,6 +225,13 @@ const StyledProject = styled.li`
       svg {
         width: 20px;
         height: 20px;
+        transition: var(--transition);
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: ${({ theme }) => theme.colors.darkerHeader};
+        }
       }
     }
   }
@@ -274,6 +281,10 @@ const StyledProject = styled.li`
         transition: var(--transition);
         background-color: ${({ theme }) => theme.colors.buttonTint};
         mix-blend-mode: screen;
+
+        @media (max-width: 768px) {
+          mix-blend-mode: multiply;
+        }
       }
     }
 
@@ -315,13 +326,13 @@ const Projects = ({ content }) => {
         {projects &&
           projects.map((project, i) => {
             const { body, frontmatter } = project.node;
-            const { title, emoji, github, external, tags, screenshot } = frontmatter;
+            const { title, emoji, github, external, tags, screenshot, category } = frontmatter;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">{frontmatter.emoji} {frontmatter.category}</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>

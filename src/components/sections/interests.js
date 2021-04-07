@@ -37,6 +37,10 @@ const StyledText = styled.div`
       border-radius: ${({ theme }) => theme.borderRadius};
       background: ${({ theme }) => theme.colors.buttonTint};
     }
+
+    @media (max-width: 600px) {
+      grid-template-columns: unset;
+    }
   }
 
   svg {
