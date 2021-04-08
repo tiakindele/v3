@@ -53,24 +53,23 @@ const Hero = ({ content }) => {
   const heroEmoji = getImage(frontmatter.heroEmoji);
   const heroName = author;
   const heroEmail = "mailto:" + email;
-  const eControls = useAnimation();
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), navDelay)
-    const pageLoadSequence = async () => {
-      eControls.start({
-        rotate: [20, 0, 40, 0, 30, 20, 20, 20, 20, 20, 20],
-        transition: { duration: 2.5, loop: 3, repeatDelay: 1 },
-      })
-    }
-    pageLoadSequence()
     return () => clearTimeout(timeout);
-  }, [eControls])
+  }, [])
 
   const one = (
     <h1>
       {frontmatter.greetingPrefix}
-      <motion.div animate={eControls} style={{ originX: 0.7, originY: 0.9 }}>
+      <motion.div
+        animate={{
+          scale: [1, 1.5, 1.5, 1, 1],
+          rotate: [20, 0, 40, 0, 30, 20, 20, 20, 20, 20, 20]
+        }}
+        transition={{ duration: 2.5, loop: 2, repeatDelay: 1 }}
+        style={{ originX: 0.7, originY: 0.9 }}
+      >
         <GatsbyImage image={heroEmoji} alt="Hello" />
       </motion.div>
       {frontmatter.greetingSuffix}

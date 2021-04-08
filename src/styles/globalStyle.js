@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 import modernNormalize from "styled-modern-normalize"
+import TransitionStyles from './TransitionStyles';
+import PrismStyles from './PrismStyles';
 
 import Fonts from './fonts';
 import "@fontsource/poppins" // Defaults to weight 400.
@@ -419,6 +421,9 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
-`
+  ${TransitionStyles};
+
+  ${PrismStyles};
+`;
 
 export default GlobalStyle

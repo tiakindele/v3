@@ -225,7 +225,7 @@ const Menu = () => {
       document.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('resize', onResize);
     };
-  }, []);
+  }, [onKeyDown, setFocusables]);
 
   const wrapperRef = useRef();
   useOnClickOutside(wrapperRef, () => setMenuOpen(false));

@@ -2,7 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import { useScrollDirection } from '@hooks';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { navLinks } from "@config";
+import { loaderDelay } from '@utils';
 import Logo from "./logo";
 import ThemeContext from "@context/themeContext";
 import PropTypes from 'prop-types';
@@ -139,32 +141,64 @@ const Header = ({ isHome }) => {
     };
   }, []);
 
+  const timeout = isHome ? loaderDelay : 0;
+  const fadeClass = isHome ? 'fade' : '';
+  const fadeDownClass = isHome ? 'fadedown' : '';
+
   return (
     <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>
-        {isMounted && (
-          <Link to="/" aria-label="home">
-            <Logo />
-          </Link>
-        )}
+        <TransitionGroup component={null}>
+          {isMounted && (
+            <CSSTransition classNames={fadeClass} timeout={timeout}>
+              <div className="logo" tabIndex="-1">
+                {isHome ? (
+                  <a href="/" aria-label="home">
+                    <Logo />
+                  </a>
+                ) : (
+                  <Link to="/" aria-label="home">
+                    <Logo />
+                  </Link>
+                )}
+              </div>
+            </CSSTransition>
+          )}
+        </TransitionGroup>
 
         <StyledLinks>
           <ol>
-            {isMounted &&
-              menu &&
-              menu.map(({ name, url }, key) => {
-                return (
-                  <li key={key}><Link key={key} to={url}>{name}</Link></li>
-                )
-              })}
+            <TransitionGroup component={null}>
+              {isMounted &&
+                menu &&
+                menu.map(({ url, name }, i) => (
+                  <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
+                    <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                      <Link key={i} to={url}>{name}</Link>
+                    </li>
+                  </CSSTransition>
+                ))}
+            </TransitionGroup>
           </ol>
 
-          {isMounted && (
-            <button className="toggler-button" onClick={themeContext.themeToggler}>switch theme</button>
-          )}
+          <TransitionGroup component={null}>
+            {isMounted && (
+              <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+                <div style={{ transitionDelay: `${isHome ? menu.length * 100 : 0}ms` }}>
+                  <button className="toggler-button" onClick={themeContext.themeToggler}>switch theme</button>
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
         </StyledLinks>
 
-        {isMounted && (<Menu />)}
+        <TransitionGroup component={null}>
+          {isMounted && (
+            <CSSTransition classNames={fadeClass} timeout={timeout}>
+              <Menu />
+            </CSSTransition>
+          )}
+        </TransitionGroup>
       </StyledNav>
     </StyledHeader>
   );
