@@ -6,6 +6,7 @@ import { navLinks } from "@config";
 import Logo from "./logo";
 import ThemeContext from "@context/themeContext";
 import PropTypes from 'prop-types';
+import Menu from "@components/menu";
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -102,14 +103,6 @@ const StyledLinks = styled.div`
 
       a {
         padding: 10px;
-
-        &:before {
-          content: '';
-          margin-right: 5px;
-          color: ${({ theme }) => theme.colors.link};
-          font-size: var(--fz-xxs);
-          text-align: right;
-        }
       }
     }
   }
@@ -170,6 +163,8 @@ const Header = ({ isHome }) => {
             <button className="toggler-button" onClick={themeContext.themeToggler}>switch theme</button>
           )}
         </StyledLinks>
+
+        {isMounted && (<Menu />)}
       </StyledNav>
     </StyledHeader>
   );
