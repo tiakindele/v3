@@ -65,7 +65,7 @@ const Contact = () => {
         <p style={{ color: "green" }}>Thanks for your message! </p>
       )}
 
-      <StyledContactForm method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact" action="/contact/?success=true">
+      <StyledContactForm netlify method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact" action="/#contact/?success=true">
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
         <div>
