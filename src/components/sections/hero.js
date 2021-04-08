@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { motion, useAnimation } from "framer-motion"
-import { navDelay } from '@utils';
+import { navDelay, loaderDelay } from '@utils';
 import { author, email } from "@config"
 
 const StyledHeroSection = styled.section`
@@ -48,7 +49,7 @@ const StyledHeroSection = styled.section`
 
 const Hero = ({ content }) => {
   const { frontmatter, body } = content;
-  const [isMounted, setIsMounted] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
   const heroEmoji = getImage(frontmatter.heroEmoji);
   const heroName = author;
   const heroEmail = "mailto:" + email;
@@ -93,10 +94,15 @@ const Hero = ({ content }) => {
 
   return (
     <StyledHeroSection id="hero">
-      {isMounted &&
-        items &&
-        items.map((item, key) => (<div key={key}>{item}</div>))
-      }
+      <TransitionGroup component={null}>
+        {isMounted &&
+          items &&
+          items.map((item, i) => (
+            <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+              <div key={i} style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+            </CSSTransition>
+          ))}
+      </TransitionGroup>
     </StyledHeroSection>
   );
 };
