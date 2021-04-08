@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { srConfig, email } from '@config';
 import sr from '@utils/sr';
@@ -40,21 +40,43 @@ const StyledContactSection = styled.section`
   }
 `;
 
+const StyledContactForm = styled.form`
+`
+
 const Contact = () => {
   const revealContainer = useRef(null);
-  useEffect(() => sr.reveal(revealContainer.current, srConfig()), []);
+  const [success, setSuccess] = useState(false);
+  useEffect(() => {
+    if ( window.location.search.includes('success=true') ) {
+      setSuccess(true);
+    }
+    sr.reveal(revealContainer.current, srConfig())
+  }, []);
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
       <h2 className="title">say <span className="highlighted-lg">hello</span></h2>
-
       <p>
         I am always interested in making new connections and having conversations! Looking forward to hearing from you.
       </p>
+      <a className="email-link" href={`mailto:${email}`}>reach out</a>
 
-      <a className="email-link" href={`mailto:${email}`}>
-        reach out
-      </a>
+      {success && (
+        <p style={{ color: "green" }}>Thanks for your message! </p>
+      )}
+
+      <StyledContactForm name="Contact Form" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="Contact Form" />
+        <div>
+          <label>Your Email:</label>
+          <input type="email" name="email" />
+        </div>
+        <div>
+          <label>Message:</label>
+          <textarea name="message" />
+        </div>
+        <button type="submit">Send</button>
+      </StyledContactForm>
     </StyledContactSection>
   );
 };
