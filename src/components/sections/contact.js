@@ -65,15 +65,17 @@ const Contact = () => {
         <p style={{ color: "green" }}>Thanks for your message! </p>
       )}
 
-      <StyledContactForm name="Contact Form" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="Contact Form" />
+      <StyledContactForm method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact">
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
         <div>
-          <label>Your Email:</label>
-          <input type="email" name="email" />
+          <p><label>Your Name:</label><input type="name" name="name" /></p>
         </div>
         <div>
-          <label>Message:</label>
-          <textarea name="message" />
+          <p><label>Your Email:</label><input type="email" name="email" /></p>
+        </div>
+        <div>
+          <p><label>Message:</label><textarea name="message" /></p>
         </div>
         <button type="submit">Send</button>
       </StyledContactForm>
