@@ -16,10 +16,6 @@ const StyledMenu = styled.div`
   .buttons-container {
     display: flex;
   }
-
-  .dark-mode-toggler {
-    margin: 16px;
-  }
 `;
 
 const StyledHamburgerButton = styled.button`
@@ -175,7 +171,7 @@ const Menu = () => {
 
       <div ref={wrapperRef}>
         <div className="buttons-container">
-          <div className="dark-mode-toggler"><Toggler/></div>
+          <Toggler/>
           <StyledHamburgerButton onClick={toggleMenu} menuOpen={menuOpen} ref={buttonRef}>
             <div className="ham-box">
               <div className="ham-box-inner" />

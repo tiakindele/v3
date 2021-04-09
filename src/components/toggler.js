@@ -6,7 +6,7 @@ const IconWrapper = styled.button`
   opacity: 0.5;
   position: relative;
   border-radius: 5px;
-  width: 40px;
+  width: auto;
   height: 25px;
   display: flex;
   align-items: center;
@@ -25,11 +25,17 @@ const IconWrapper = styled.button`
     width: 100%;
     height: 160%;
     border: 2px solid ${({ theme }) => theme.colors.secondary};
-    background: blue;
     border-radius: 5px;
   }
   :focus {
     outline: 0px;
+  }
+  @media (max-width: 768px) {
+    margin: 18px 0px;
+    display: inline-flex;
+    &:hover {
+      opacity: 0.5;
+    }
   }
 `;
 
