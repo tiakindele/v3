@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ThemeContext from "@context/themeContext";
 import styled from "styled-components";
+import { isMobile} from "react-device-detect";
 
 const IconWrapper = styled.button`
   opacity: 0.5;
@@ -89,8 +90,8 @@ const MoonOrSun = styled.div`
 
 const MoonMask = styled.div`
   position: absolute;
-  right: -1px;
-  top: -8px;
+  right: ${p => (p.isMobile ? '10px' : '-1px')};
+  top: ${p => (p.isMobile ? '-8px' : '-8px')};
   height: 24px;
   width: 24px;
   border-radius: 50%;
@@ -114,7 +115,7 @@ const Toggler = () => {
       title={isDark ? "Activate light mode" : "Activate dark mode"}
     >
       <MoonOrSun isDark={isDark} />
-      <MoonMask isDark={isDark} />
+      <MoonMask isDark={isDark} isMobile={isMobile} />
     </IconWrapper>
   );
 }
