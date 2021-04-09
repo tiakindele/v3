@@ -3,15 +3,22 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { navLinks } from '@config';
-import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
-import ThemeContext from "@context/themeContext";
+import Toggler from "@components/toggler";
 
 const StyledMenu = styled.div`
   display: none;
 
   @media (max-width: 768px) {
     display: block;
+  }
+
+  .buttons-container {
+    display: flex;
+  }
+
+  .dark-mode-toggler {
+    margin: 16px;
   }
 `;
 
@@ -140,7 +147,7 @@ const StyledSidebar = styled.aside`
     }
   }
 
-  .toggler-button {
+  .nav-button {
     ${({ theme }) => theme.mixins.bigButton};
     padding: 18px 50px;
     margin: 10% auto 0;
@@ -152,80 +159,10 @@ const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const themeContext = useContext(ThemeContext);
   const { menu } = navLinks;
 
   const buttonRef = useRef(null);
   const navRef = useRef(null);
-
-  let menuFocusables;
-  let firstFocusableEl;
-  let lastFocusableEl;
-
-  const setFocusables = () => {
-    menuFocusables = [buttonRef.current, ...Array.from(navRef.current.querySelectorAll('a'))];
-    firstFocusableEl = menuFocusables[0];
-    lastFocusableEl = menuFocusables[menuFocusables.length - 1];
-  };
-
-  const handleBackwardTab = e => {
-    if (document.activeElement === firstFocusableEl) {
-      e.preventDefault();
-      lastFocusableEl.focus();
-    }
-  };
-
-  const handleForwardTab = e => {
-    if (document.activeElement === lastFocusableEl) {
-      e.preventDefault();
-      firstFocusableEl.focus();
-    }
-  };
-
-  const onKeyDown = e => {
-    switch (e.key) {
-      case KEY_CODES.ESCAPE:
-      case KEY_CODES.ESCAPE_IE11: {
-        setMenuOpen(false);
-        break;
-      }
-
-      case KEY_CODES.TAB: {
-        if (menuFocusables && menuFocusables.length === 1) {
-          e.preventDefault();
-          break;
-        }
-        if (e.shiftKey) {
-          handleBackwardTab(e);
-        } else {
-          handleForwardTab(e);
-        }
-        break;
-      }
-
-      default: {
-        break;
-      }
-    }
-  };
-
-  const onResize = e => {
-    if (e.currentTarget.innerWidth > 768) {
-      setMenuOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('keydown', onKeyDown);
-    window.addEventListener('resize', onResize);
-
-    setFocusables();
-
-    return () => {
-      document.removeEventListener('keydown', onKeyDown);
-      window.removeEventListener('resize', onResize);
-    };
-  }, [onKeyDown, setFocusables]);
 
   const wrapperRef = useRef();
   useOnClickOutside(wrapperRef, () => setMenuOpen(false));
@@ -237,11 +174,14 @@ const Menu = () => {
       </Helmet>
 
       <div ref={wrapperRef}>
-        <StyledHamburgerButton onClick={toggleMenu} menuOpen={menuOpen} ref={buttonRef}>
-          <div className="ham-box">
-            <div className="ham-box-inner" />
-          </div>
-        </StyledHamburgerButton>
+        <div className="buttons-container">
+          <div className="dark-mode-toggler"><Toggler/></div>
+          <StyledHamburgerButton onClick={toggleMenu} menuOpen={menuOpen} ref={buttonRef}>
+            <div className="ham-box">
+              <div className="ham-box-inner" />
+            </div>
+          </StyledHamburgerButton>
+        </div>
 
         <StyledSidebar menuOpen={menuOpen} aria-hidden={!menuOpen} tabIndex={menuOpen ? 1 : -1}>
           <nav ref={navRef}>
@@ -257,7 +197,7 @@ const Menu = () => {
               </ol>
             )}
 
-            <button className="toggler-button" onClick={themeContext.themeToggler}>switch theme</button>
+            <button className="nav-button">resume</button>
           </nav>
         </StyledSidebar>
       </div>

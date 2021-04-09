@@ -9,6 +9,7 @@ import Logo from "./logo";
 import ThemeContext from "@context/themeContext";
 import PropTypes from 'prop-types';
 import Menu from "@components/menu";
+import Toggler from "@components/toggler";
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -109,7 +110,7 @@ const StyledLinks = styled.div`
     }
   }
 
-  .toggler-button {
+  .nav-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
     font-size: var(--fz-xs);
@@ -185,7 +186,17 @@ const Header = ({ isHome }) => {
             {isMounted && (
               <CSSTransition classNames={fadeDownClass} timeout={timeout}>
                 <div style={{ transitionDelay: `${isHome ? menu.length * 100 : 0}ms` }}>
-                  <button className="toggler-button" onClick={themeContext.themeToggler}>switch theme</button>
+                  <button className="nav-button">resume</button>
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+
+          <TransitionGroup component={null}>
+            {isMounted && (
+              <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+                <div style={{ transitionDelay: `${isHome ? (menu.length + 1) * 100 : 0}ms` }}>
+                  <Toggler />
                 </div>
               </CSSTransition>
             )}
