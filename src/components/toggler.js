@@ -12,6 +12,7 @@ const IconWrapper = styled.button`
   align-items: center;
   justify-content: center;
   transition: var(--transition);
+  transform: scale(0.8);
   margin-left: 16px;
   background-color: transparent;
   &:hover {
