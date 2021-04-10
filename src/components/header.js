@@ -186,7 +186,13 @@ const Header = ({ isHome }) => {
             {isMounted && (
               <CSSTransition classNames={fadeDownClass} timeout={timeout}>
                 <div style={{ transitionDelay: `${isHome ? menu.length * 100 : 0}ms` }}>
-                  <button className="nav-button">resume</button>
+                  <a
+                    className="nav-button"
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    resume
+                  </a>
                 </div>
               </CSSTransition>
             )}
