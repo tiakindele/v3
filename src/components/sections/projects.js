@@ -382,12 +382,6 @@ const Projects = ({ content }) => {
             );
           })}
       </StyledProjectsGrid>
-
-      <div className="view-more" ref={revealMore}>
-        <a className="see-more-link" href={sectionDetails.buttonUrl}>
-          {sectionDetails.buttonText}
-        </a>
-      </div>
     </StyledProjectsSection>
   );
 };
