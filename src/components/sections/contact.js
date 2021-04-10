@@ -5,11 +5,11 @@ import sr from '@utils/sr';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
-  margin: 0 auto 100px;
+  margin: 100px auto;
   text-align: center;
 
   @media (max-width: 768px) {
-    margin: 0 auto 50px;
+    margin: 50px auto;
   }
 
   .overline {
