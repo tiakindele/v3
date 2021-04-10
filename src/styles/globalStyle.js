@@ -135,7 +135,7 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
 
       @media (max-width: 1080px) {
-        padding: 0 50px;
+        padding: 0 100px;
       }
       @media (max-width: 768px) {
         padding: 0 50px;

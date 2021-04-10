@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 import { navDelay, loaderDelay } from '@utils';
 import { author, email } from "@config"
+import SocialHorizontal from "@components/socialHorizontal"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -38,12 +39,15 @@ const StyledHeroSection = styled.section`
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
   }
 
   .gatsby-image-wrapper {
     width: unset;
     margin: 0px 12px 0px 3px;
+  }
+
+  .social-container {
+    padding: 20px 0px;
   }
 `;
 
@@ -84,12 +88,15 @@ const Hero = ({ content }) => {
   );
   const four = (<MDXRenderer>{body}</MDXRenderer>);
   const five = (
+    <div class='social-container'><SocialHorizontal /></div>
+  );
+  const six = (
     <a href={heroEmail} className="email-link">
       {frontmatter.button}
     </a>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [one, two, three, four, five, six];
 
   return (
     <StyledHeroSection id="hero">

@@ -27,9 +27,7 @@ const Side = ({ children, isHome, orientation }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
 
   useEffect(() => {
-    if (!isHome) {
-      return;
-    }
+    if (!isHome) { return; }
     const timeout = setTimeout(() => setIsMounted(true), loaderDelay);
     return () => clearTimeout(timeout);
   }, []);

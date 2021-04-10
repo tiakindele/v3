@@ -44,6 +44,15 @@ const Layout = ({ children, location }) => {
   };
 
   useEffect(() => {
+    const id = location.hash.substring(1); // location.hash without the '#'
+    setTimeout(() => {
+      const el = document.getElementById(id || 'hero');
+      if (el) {
+        el.scrollIntoView();
+        el.focus();
+      }
+    }, 0);
+
     handleExternalLinks();
   }, []);
 
@@ -56,7 +65,7 @@ const Layout = ({ children, location }) => {
       <ThemeContext.Provider value={{themeToggler: themeToggler, theme: theme}}>
         <StyledLayout>
           <Header isHome={isHome}/>
-          <Social isHome={isHome} />
+          <Social isHome={isHome}/>
           <main id="main-content">{children}</main>
           <Footer />
         </StyledLayout>
