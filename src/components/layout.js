@@ -8,6 +8,7 @@ import ThemeContext from "@context/themeContext"
 import GlobalStyle from "@styles/globalStyle"
 import Header from "./header"
 import Footer from "./footer"
+import Social from "./social"
 
 const StyledLayout = styled.div`
   width: 100%;
@@ -55,6 +56,7 @@ const Layout = ({ children, location }) => {
       <ThemeContext.Provider value={{themeToggler: themeToggler, theme: theme}}>
         <StyledLayout>
           <Header isHome={isHome}/>
+          <Social isHome={isHome} />
           <main id="main-content">{children}</main>
           <Footer />
         </StyledLayout>

@@ -73,7 +73,12 @@ const Footer = () => {
       </StyledSocialLinks>
 
       <StyledCredit tabindex="-1">
-        <div>© {getYear()} Tolu Akindele</div>
+        <a
+          href="https://github.com/tiakindele/v3"
+          target="_blank"
+          rel="noopener noreferrer">
+          © {getYear()} Tolu Akindele
+        </a>
       </StyledCredit>
     </StyledFooter>
   );
