@@ -53,7 +53,7 @@ const Contact = () => {
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        reach out
+        get in touch
       </a>
     </StyledContactSection>
   );
