@@ -8,6 +8,8 @@ import IconReact from "./ReactIcon";
 import IconSpotify from "./Spotify";
 import IconWordpress from "./Wordpress";
 import IconExternal from "./External";
+import IconNotion from "./Notion";
+import IconProductHunt from "./ProductHunt";
 
 const Icon = ({ name, color }) => {
   switch (name.toLowerCase()) {
@@ -27,6 +29,10 @@ const Icon = ({ name, color }) => {
       return <IconWordpress color={color} />
     case "external":
       return <IconExternal color={color} />
+    case "notion":
+      return <IconNotion color={color} />
+    case "producthunt":
+      return <IconProductHunt color={color} />
     default:
       return null
   }

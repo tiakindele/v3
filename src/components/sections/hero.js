@@ -88,7 +88,7 @@ const Hero = ({ content }) => {
   );
   const four = (<MDXRenderer>{body}</MDXRenderer>);
   const five = (
-    <div class='social-container'><SocialHorizontal /></div>
+    <div className='social-container'><SocialHorizontal /></div>
   );
   const six = (
     <a href={heroEmail} className="email-link">
