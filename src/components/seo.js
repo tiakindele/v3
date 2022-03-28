@@ -30,6 +30,7 @@ function SEO({ description, lang, title, image }) {
   )
 
   const {
+    author,
     defaultTitle,
     defaultDescription,
     siteUrl,
@@ -41,6 +42,7 @@ function SEO({ description, lang, title, image }) {
     image: `${siteUrl}${image}`,
     url: `${siteUrl}${pathname}`,
     lang: `${lang}`,
+    author: `${author}`,
   }
 
 
@@ -50,6 +52,7 @@ function SEO({ description, lang, title, image }) {
 
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+      <meta name="author" content={seo.author} />
 
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />

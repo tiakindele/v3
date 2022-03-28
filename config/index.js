@@ -4,7 +4,7 @@ module.exports = {
   siteTitle: "Tolu Akindele",
   email: "tolu@akindele.ca",
   siteShortTitle: "ta.",
-  siteDescription: "Get to know more about Tolu.",
+  siteDescription: "A Vancouver-based full-stack engineer. Currently at Asurion focused on creating and maintaining innovative software systems in the Retail Assets space.",
   siteUrl: "https://www.akindele.ca",
   siteLanguage: "en_US",
   siteIcon: "src/images/logo.png",
