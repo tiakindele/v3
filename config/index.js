@@ -8,7 +8,7 @@ module.exports = {
   siteUrl: "https://www.akindele.ca",
   siteLanguage: "en_US",
   siteIcon: "src/images/logo.png",
-  siteImage: "static/home.png",
+  siteImage: "/home.png",
   seoTitleSuffix: "Portfolio",
 
   // -- THEME SETTINGS -----
